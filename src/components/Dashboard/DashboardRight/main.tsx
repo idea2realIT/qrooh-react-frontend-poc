@@ -1,10 +1,15 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { FaRegCalendarDays, FaAngleDown, FaUserLarge } from "react-icons/fa6";
+import {
+  FaRegCalendarDays,
+  FaAngleDown,
+  FaUserLarge,
+  FaCirclePlus,
+} from "react-icons/fa6";
 import Typography from "@mui/material/Typography";
 import CustomButton from "../../microComponents/CustomButton";
 import CustomWrapper from "../../microComponents/CustomWrapper";
-
+import AnalyticsPage from "../SubPages/AnalyticsPage";
 function Main() {
   return (
     <Box
@@ -35,22 +40,24 @@ function Main() {
           </Typography>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center" }}>
+          <CustomButton Icon={FaCirclePlus} LightText="Add new Metric" />
           <CustomButton
             Icon={FaRegCalendarDays}
             LightText="Your overview of the"
             DarkText="last 7 Days"
             AfterIcon={FaAngleDown}
+            sx={{ marginLeft: "1rem" }}
           />
-          <CustomButton
+          {/* <CustomButton
             Icon={FaUserLarge}
             DarkText="4yourbrand"
             AfterIcon={FaAngleDown}
             sx={{ marginLeft: "1rem" }}
-          />
+          /> */}
         </Box>
       </Box>
       <CustomWrapper sx={{ marginTop: "3rem" }}>
-        <Box sx={{ width: "50px", height: "300px", background: "red" }}></Box>
+        <AnalyticsPage />
       </CustomWrapper>
     </Box>
   );
