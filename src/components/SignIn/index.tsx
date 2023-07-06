@@ -42,7 +42,14 @@ function Index() {
           width: "50%",
         }}
       >
-        <Box sx={{}}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            height: "100%",
+          }}
+        >
           <Box sx={{ display: "flex", justifyContent: "end" }}>
             <img
               src={name}
