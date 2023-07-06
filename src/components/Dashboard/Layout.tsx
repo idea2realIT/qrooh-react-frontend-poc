@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 // --start-of-css--
 const OuterStyle = {
   display: "flex",
-  height: "100%",
+  height: "100vh",
 };
 const LeftBoxStyle = {
   height: "100%",
@@ -18,19 +18,14 @@ const RightBoxStyle = {
 // --end-of-css--
 function Layout() {
   return (
-    <Container
-      sx={{ height: "100vh", padding: "0px !important" }}
-      maxWidth="xl"
-    >
-      <Box sx={OuterStyle}>
-        <Box sx={LeftBoxStyle}>
-          <DashBoardLeft />
-        </Box>
-        <Box sx={RightBoxStyle}>
-          <DashBoardRight />
-        </Box>
+    <Box sx={OuterStyle}>
+      <Box sx={LeftBoxStyle}>
+        <DashBoardLeft />
       </Box>
-    </Container>
+      <Box sx={RightBoxStyle}>
+        <DashBoardRight />
+      </Box>
+    </Box>
   );
 }
 
