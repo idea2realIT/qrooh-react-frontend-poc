@@ -9,23 +9,24 @@ import {
   FaGear,
   FaQ,
 } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 const MenuItems = [
   {
     id: 0,
     name: "metrics",
-    link: "/metrics",
+    link: "/dashboard/analytics",
     Icon: FaGauge,
   },
   {
     id: 1,
     name: "contacts",
-    link: "/contacts",
+    link: "/dashboard/contacts",
     Icon: FaAddressBook,
   },
   {
     id: 2,
     name: "reports",
-    link: "./reports",
+    link: "/dashboard/reports",
     Icon: FaFolderOpen,
   },
 ];
@@ -42,8 +43,8 @@ function main() {
       }}
     >
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <a
-          href="/something"
+        <Link
+          to="/dashboard/analytics"
           style={{
             height: "4.6rem",
             width: "4.6rem",
@@ -62,12 +63,12 @@ function main() {
               color: "#355f44",
             }}
           />
-        </a>
+        </Link>
         {MenuItems.map((e) => {
           return (
-            <a
+            <Link
               key={e.id}
-              href={e.link}
+              to={e.link}
               style={{
                 height: "4.6rem",
                 width: "4.6rem",
@@ -88,13 +89,13 @@ function main() {
                   color: "#355f44",
                 }}
               />
-            </a>
+            </Link>
           );
         })}
       </Box>
       <Box>
-        <a
-          href="/settings"
+        <Link
+          to="/dashboard/settings"
           style={{
             height: "4.6rem",
             width: "4.6rem",
@@ -115,7 +116,7 @@ function main() {
               color: "#355f44",
             }}
           />
-        </a>
+        </Link>
         <Avatar
           sx={{ height: "4.6rem", width: "4.6rem", marginTop: "1.8rem" }}
           alt="person name"

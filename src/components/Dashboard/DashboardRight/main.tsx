@@ -1,16 +1,11 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import Box from "@mui/material/Box";
-import {
-  FaRegCalendarDays,
-  FaAngleDown,
-  FaUserLarge,
-  FaCirclePlus,
-} from "react-icons/fa6";
-import Typography from "@mui/material/Typography";
+import { FaAngleDown, FaCirclePlus, FaRegCalendarDays } from "react-icons/fa6";
+
+import { Outlet } from "react-router-dom";
 import CustomButton from "../../microComponents/CustomButton";
-import CustomWrapper from "../../microComponents/CustomWrapper";
-import AnalyticsPage from "../SubPages/AnalyticsPage";
-function Main() {
+
+function DashBoardComponent() {
   return (
     <Box
       sx={{
@@ -49,18 +44,16 @@ function Main() {
             sx={{ marginLeft: "1rem" }}
           />
           {/* <CustomButton
-            Icon={FaUserLarge}
-            DarkText="4yourbrand"
-            AfterIcon={FaAngleDown}
-            sx={{ marginLeft: "1rem" }}
-          /> */}
+        Icon={FaUserLarge}
+        DarkText="4yourbrand"
+        AfterIcon={FaAngleDown}
+        sx={{ marginLeft: "1rem" }}
+      /> */}
         </Box>
       </Box>
-      <CustomWrapper sx={{ marginTop: "3rem" }}>
-        <AnalyticsPage />
-      </CustomWrapper>
+      <Outlet />
     </Box>
   );
 }
 
-export default Main;
+export default DashBoardComponent;
