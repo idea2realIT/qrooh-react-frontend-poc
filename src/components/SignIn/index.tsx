@@ -75,7 +75,7 @@ function Index() {
                 fontWeight: "600",
               }}
               onSubmit={() => {
-                navigate("/dashboard");
+                navigate("/dashboard/analytics");
               }}
             >
               <label style={{ color: "#355f44", fontSize: "0.9rem" }}>
@@ -163,7 +163,7 @@ function Index() {
                   cursor: "pointer",
                 }}
                 onClick={() => {
-                  navigate("/dashboard");
+                  navigate("/dashboard/analytics");
                 }}
               >
                 <FcGoogle style={{ height: "2rem", width: "2rem" }} />

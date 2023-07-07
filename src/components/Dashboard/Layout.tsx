@@ -6,7 +6,8 @@ import Container from "@mui/material/Container";
 // --start-of-css--
 const OuterStyle = {
   display: "flex",
-  height: "100vh",
+  height: "830px",
+  width: "1473px",
 };
 const LeftBoxStyle = {
   height: "100%",

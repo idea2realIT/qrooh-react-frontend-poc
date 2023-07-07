@@ -6,6 +6,7 @@ import SignIn from "./components/SignIn";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnalyticsPage from "./components/Dashboard/SubPages/AnalyticsPage";
 import Contact from "./components/Dashboard/SubPages/ContactsPage";
+import ReportPage from "./components/Dashboard/SubPages/ReportPage";
 function App() {
   return (
     <Box sx={{ height: "100vh", width: "100vw" }}>
@@ -15,6 +16,7 @@ function App() {
           <Route path="/dashboard" element={<DashBoard />}>
             <Route path="analytics" element={<AnalyticsPage />} />
             <Route path="contacts" element={<Contact />} />
+            <Route path="reports" element={<ReportPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
