@@ -28,57 +28,61 @@ function Contact() {
           />
         </Box>
       </TopBar>
-      <Box
-        sx={{
-          background: "white",
-          marginTop: "3rem",
-          height: "500px",
-          borderRadius: "0px 15px 50px 15px",
-        }}
-      >
+      <Box>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "center",
-            padding: "1.2rem",
-            borderRadius: "0px 15px 0px 0px",
-            background: "#d0e2cf",
+            background: "white",
+            marginTop: "3rem",
+            height: "500px",
+            borderRadius: "0px 15px 50px 15px",
           }}
         >
-          <button
-            style={{
-              border: "none",
-              background: "none",
-              fontSize: "0.9rem",
+          <Box
+            sx={{
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "end",
               alignItems: "center",
-              fontFamily: "'Poppins', sans-serif",
+              padding: "1.2rem",
+              borderRadius: "0px 15px 0px 0px",
+              background: "#d0e2cf",
             }}
           >
-            Sort
-            <FaAngleDown
-              style={{ marginTop: "0.08rem", marginLeft: "0.2rem" }}
-            />
-          </button>
-          <button
-            style={{
-              border: "none",
-              background: "none",
-              fontSize: "0.9rem",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontFamily: "'Poppins', sans-serif",
-              marginLeft: "1.5rem",
-            }}
-          >
-            Label
-            <FaAngleDown
-              style={{ marginTop: "0.08rem", marginLeft: "0.2rem" }}
-            />
-          </button>
+            <button
+              style={{
+                border: "none",
+                background: "none",
+                fontSize: "1.05rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontFamily: "'Poppins', sans-serif",
+                fontWeight: "700",
+              }}
+            >
+              Sort
+              <FaAngleDown
+                style={{ marginTop: "0.08rem", marginLeft: "0.2rem" }}
+              />
+            </button>
+            <button
+              style={{
+                border: "none",
+                background: "none",
+                fontSize: "0.9rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontFamily: "'Poppins', sans-serif",
+                marginLeft: "1.5rem",
+              }}
+            >
+              Label
+              <FaAngleDown
+                style={{ marginTop: "0.08rem", marginLeft: "0.2rem" }}
+              />
+            </button>
+          </Box>
+          <Box sx={{ background: "red", height: "1rem" }}></Box>
         </Box>
       </Box>
     </Box>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import BackgroundImage from "../../images/background.webp";
 import logo from "../../images/logoQ.png";
 import name from "../../images/name.png";
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 function Index() {
   const navigate = useNavigate();
   return (
-    <Box sx={{ display: "flex", height: "100vh" }}>
+    <Box sx={{ display: "flex", height: "100vh", position: "relative" }}>
       <Box
         sx={{
           width: "50%",
@@ -21,6 +21,17 @@ function Index() {
           position: "relative",
         }}
       >
+        <div
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            background: "#59b947",
+            left: "0",
+            top: "0",
+            opacity: "0.3",
+          }}
+        ></div>
         <img
           src={logo}
           alt="logo"
@@ -145,7 +156,6 @@ function Index() {
                     style={{
                       height: "1.3rem",
                       width: "1.3rem",
-
                       position: "absolute",
                       right: "2rem",
                       top: "35%",

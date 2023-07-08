@@ -2,12 +2,11 @@ import React from "react";
 import Box from "@mui/material/Box";
 import DashBoardLeft from "./DashBoardLeft";
 import DashBoardRight from "./DashboardRight";
-import Container from "@mui/material/Container";
 // --start-of-css--
 const OuterStyle = {
   display: "flex",
-  height: "830px",
-  width: "1473px",
+  height: "100vh",
+  width: "100vw",
 };
 const LeftBoxStyle = {
   height: "100%",
