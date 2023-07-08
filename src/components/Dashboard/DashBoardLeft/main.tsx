@@ -10,7 +10,6 @@ import {
   FaQ,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { Divider } from "@mui/material";
 const MenuItems = [
   {
     id: 0,
@@ -113,13 +112,16 @@ function DashBoardLeft() {
           style={{
             height: "4.6rem",
             width: "4.6rem",
-            background: "white",
+            background: `${3 === active ? "#d6eed1" : "white"}`,
             marginTop: "1.8rem",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            border: "3px solid #eaefec",
+            border: `3px solid ${3 === active ? "#c6e2c3" : "#eaefec"}`,
             borderRadius: "15px",
+          }}
+          onClick={() => {
+            setActive(3);
           }}
         >
           <FaGear

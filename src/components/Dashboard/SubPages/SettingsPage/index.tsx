@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import TopBar from "../../DashboardRight/TopBar";
 import CustomButton from "../../../microComponents/CustomButton";
+import SettingsMenuItem from "./SettingsMenuItem";
 import {
   FaUserLarge,
   FaAngleDown,
@@ -15,64 +16,35 @@ interface SettingsMenuItemsInterface {
   id: number;
   title: string;
   icon: IconType;
+  link: string;
 }
+const baseUrl = "/dashboard/settings";
 const SettingsMenuItems: SettingsMenuItemsInterface[] = [
   {
     id: 0,
     title: "Data Sources",
     icon: FaDatabase,
+    link: `${baseUrl}/data-source`,
   },
   {
     id: 1,
     title: "Metrics",
     icon: FaLink,
+    link: `${baseUrl}/metrics`,
   },
   {
     id: 2,
     title: "Accounts",
     icon: FaUserGroup,
+    link: `${baseUrl}/accounts`,
   },
   {
     id: 3,
     title: "Add-ons",
     icon: FaCirclePlus,
+    link: `${baseUrl}/add-ons`,
   },
 ];
-const SettingsMenuItem = function ({
-  Icon,
-  title,
-}: {
-  Icon: IconType;
-  title: string;
-}) {
-  return (
-    <Box
-      sx={{
-        background: "#ffffff",
-        height: "15.5rem",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: "15px",
-      }}
-    >
-      <Box sx={{ textAlign: "center" }}>
-        <Icon style={{ height: "3rem", width: "3rem", color: "#ccd7d0" }} />
-        <span
-          style={{
-            display: "block",
-            marginTop: "2rem",
-            fontWeight: "700",
-            fontSize: "2rem",
-            color: "#355f44",
-          }}
-        >
-          {title}
-        </span>
-      </Box>
-    </Box>
-  );
-};
 
 function SettingsPage() {
   return (
@@ -94,7 +66,14 @@ function SettingsPage() {
         }}
       >
         {SettingsMenuItems.map((e) => {
-          return <SettingsMenuItem title={e.title} key={e.id} Icon={e.icon} />;
+          return (
+            <SettingsMenuItem
+              title={e.title}
+              key={e.id}
+              Icon={e.icon}
+              link={e.link}
+            />
+          );
         })}
       </Box>
     </Box>
