@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import SampleAvatarImage from "../../../images/profile.jpeg";
@@ -31,7 +31,8 @@ const MenuItems = [
     Icon: FaFolderOpen,
   },
 ];
-function main() {
+function DashBoardLeft() {
+  const [active, setActive] = useState(0);
   return (
     <Box
       sx={{
@@ -73,13 +74,16 @@ function main() {
               style={{
                 height: "4.6rem",
                 width: "4.6rem",
-                background: "white",
+                background: `${e.id === active ? "#d6eed1" : "white"}`,
                 marginTop: "1.8rem",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                border: "3px solid #eaefec",
+                border: `3px solid ${e.id === active ? "#c6e2c3" : "#eaefec"}`,
                 borderRadius: "15px",
+              }}
+              onClick={() => {
+                setActive(e.id);
               }}
             >
               <e.Icon
@@ -137,4 +141,4 @@ function main() {
   );
 }
 
-export default main;
+export default DashBoardLeft;
