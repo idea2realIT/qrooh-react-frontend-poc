@@ -10,6 +10,7 @@ import {
   FaQ,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { Divider } from "@mui/material";
 const MenuItems = [
   {
     id: 0,
@@ -94,6 +95,15 @@ function main() {
         })}
       </Box>
       <Box>
+        <hr
+          style={{
+            display: "block",
+            height: "3px",
+            background: "#eaefec",
+            margin: "4px",
+            border: "none",
+          }}
+        />
         <Link
           to="/dashboard/settings"
           style={{
