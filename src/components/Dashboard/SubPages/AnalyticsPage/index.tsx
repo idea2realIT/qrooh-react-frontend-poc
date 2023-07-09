@@ -10,7 +10,6 @@ import {
   FaCircleUp,
   FaCircleDown,
 } from "react-icons/fa6";
-import Typography from "@mui/material/Typography";
 import CustomButton from "../../../microComponents/CustomButton";
 import CustomWrapper from "../../../microComponents/CustomWrapper";
 
