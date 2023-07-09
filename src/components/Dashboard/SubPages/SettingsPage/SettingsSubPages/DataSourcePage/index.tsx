@@ -10,7 +10,7 @@ import {
 import CustomWrapper from "../../../../../microComponents/CustomWrapper";
 import CustomButton from "../../../../../microComponents/CustomButton";
 import TopBar from "../../../../DashboardRight/TopBar";
-const AnalyticsArray = [
+const DataSourceArray = [
   { id: 0, source: "Google Analytics", active: true },
   {
     id: 1,
@@ -34,7 +34,7 @@ function DataSourcePage() {
       </TopBar>
       <CustomWrapper sx={{ marginTop: "3rem" }}>
         <Box sx={{}}>
-          {AnalyticsArray.map((e) => {
+          {DataSourceArray.map((e) => {
             return (
               <Box>
                 <Box
