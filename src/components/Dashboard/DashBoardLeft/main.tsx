@@ -9,7 +9,7 @@ import {
   FaGear,
   FaQ,
 } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const MenuItems = [
   {
     id: 0,
@@ -31,6 +31,7 @@ const MenuItems = [
   },
 ];
 function DashBoardLeft() {
+  const location = useLocation();
   const [active, setActive] = useState(0);
   return (
     <Box
@@ -73,12 +74,16 @@ function DashBoardLeft() {
               style={{
                 height: "4.6rem",
                 width: "4.6rem",
-                background: `${e.id === active ? "#d6eed1" : "white"}`,
+                background: `${
+                  location.pathname === e.link ? "#d6eed1" : "white"
+                }`,
                 marginTop: "1.8rem",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                border: `3px solid ${e.id === active ? "#c6e2c3" : "#eaefec"}`,
+                border: `3px solid ${
+                  location.pathname === e.link ? "#c6e2c3" : "#eaefec"
+                }`,
                 borderRadius: "15px",
               }}
               onClick={() => {
@@ -112,12 +117,18 @@ function DashBoardLeft() {
           style={{
             height: "4.6rem",
             width: "4.6rem",
-            background: `${3 === active ? "#d6eed1" : "white"}`,
+            background: `${
+              location.pathname === "/dashboard/settings" ? "#d6eed1" : "white"
+            }`,
             marginTop: "1.8rem",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            border: `3px solid ${3 === active ? "#c6e2c3" : "#eaefec"}`,
+            border: `3px solid ${
+              location.pathname === "/dashboard/settings"
+                ? "#c6e2c3"
+                : "#eaefec"
+            }`,
             borderRadius: "15px",
           }}
           onClick={() => {
