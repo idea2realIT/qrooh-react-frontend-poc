@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@mui/material";
 import BackgroundImage from "../../images/background.webp";
 import logo from "../../images/logoQ.png";
@@ -9,8 +9,15 @@ import { FcGoogle } from "react-icons/fc";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
 import urlFunctionsObject from "api/Uri";
+import Cookies from "js-cookie";
 function Index() {
   const navigate = useNavigate();
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      navigate("/dashboard/analytics");
+    }
+  }, [navigate]);
   return (
     <Box sx={{ display: "flex", height: "100vh", position: "relative" }}>
       <Box

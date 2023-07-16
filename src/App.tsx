@@ -14,7 +14,6 @@ import AddOnsPage from "./components/Dashboard/SubPages/SettingsPage/SettingsSub
 import AccountsPage from "./components/Dashboard/SubPages/SettingsPage/SettingsSubPages/AccountsPage";
 
 function OAuth2RedirectHandler() {
-
   return null;
 }
 
@@ -24,7 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
-          <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} />
+          {/* <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} /> */}
           <Route path="/dashboard" element={<DashBoard />}>
             <Route path="analytics" element={<AnalyticsPage />} />
             <Route path="contacts" element={<Contact />} />
