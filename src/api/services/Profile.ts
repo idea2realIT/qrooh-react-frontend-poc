@@ -1,5 +1,6 @@
 import axios from "axios";
 import UrlFunctionsObject from "api/Uri";
+import Cookies from "js-cookie";
 interface ApiFailureResponse {
   timestamp: string;
   status: number;
@@ -30,7 +31,12 @@ const sampleProfile = {
 export async function getProfile() {
   try {
     const profile: ApiSuccessResponse = await axios.get(
-      UrlFunctionsObject.getProfile()
+      UrlFunctionsObject.getProfile(),
+      {
+        headers: {
+          Authorization: Cookies.get("token"),
+        },
+      }
     );
     return {
       success: true,
