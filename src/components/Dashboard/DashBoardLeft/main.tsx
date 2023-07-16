@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
-import SampleAvatarImage from "@/images/profile.jpeg";
+import Box from "@mui/material/Box";
+import SampleAvatarImage from "images/profile.jpeg";
+import { useState } from "react";
 import {
   FaAddressBook,
-  FaGauge,
   FaFolderOpen,
+  FaGauge,
   FaGear,
   FaQ,
 } from "react-icons/fa6";

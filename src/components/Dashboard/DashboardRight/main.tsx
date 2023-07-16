@@ -1,9 +1,6 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
-import { FaAngleDown, FaCirclePlus, FaRegCalendarDays } from "react-icons/fa6";
+import { Box } from "@mui/material";
 
 import { Outlet } from "react-router-dom";
-import CustomButton from "../../microComponents/CustomButton";
 
 function DashBoardComponent() {
   return (
