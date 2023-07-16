@@ -6,9 +6,9 @@ import {
   FaAngleDown,
   FaEllipsis,
 } from "react-icons/fa6";
-import CustomButton from "../../../../../microComponents/CustomButton";
-import CustomWrapper from "../../../../../microComponents/CustomWrapper";
-import TopBar from "../../../../DashboardRight/TopBar";
+import CustomButton from "components/microComponents/CustomButton";
+import CustomWrapper from "components/microComponents/CustomWrapper";
+import TopBar from "components/Dashboard/DashboardRight/TopBar";
 const AccountsArray = [
   {
     id: 0,

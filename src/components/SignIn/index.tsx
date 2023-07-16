@@ -8,6 +8,7 @@ import { FaArrowRightToBracket } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
+import { signInWithGoogle } from "api/services/Auth";
 function Index() {
   const navigate = useNavigate();
   return (
@@ -163,7 +164,16 @@ function Index() {
                   />
                 </span>
               </button>
-              <Divider sx={{ marginY: "1.6rem" }} />
+            </form>
+            <Divider sx={{ marginY: "1.6rem" }} />
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
               <button
                 style={{
                   border: "2px solid #eaefec",
@@ -171,9 +181,10 @@ function Index() {
                   borderRadius: "1rem",
                   height: "3.7rem",
                   cursor: "pointer",
+                  width: "100%",
                 }}
                 onClick={() => {
-                  navigate("/dashboard/analytics");
+                  signInWithGoogle();
                 }}
               >
                 <FcGoogle style={{ height: "2rem", width: "2rem" }} />
@@ -195,7 +206,7 @@ function Index() {
                   </a>
                 </span>
               </Box>
-            </form>
+            </Box>
           </Box>
           <Box
             sx={{
