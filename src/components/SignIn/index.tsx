@@ -183,6 +183,9 @@ function Index() {
                   height: "3.7rem",
                   cursor: "pointer",
                   width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <FcGoogle style={{ height: "2rem", width: "2rem" }} />
