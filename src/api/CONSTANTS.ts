@@ -1,9 +1,11 @@
-export const baseUri = "localhost:8080";
-export const OAuthRedirectUri = "localhost:8080";
+export const baseUri = "http://localhost:8080";
+export const OAuthRedirectUri = "http://localhost:3000/oauth2/redirect";
+
+export const REDIRECT_URI = "redirect_uri";
 
 // endpoints
-export const signInWithGoogleEndPoint = "/oauth/google";
-export const signInWithPasswordEndPoint = "/auth";
+export const signInWithGoogleEndPoint = "oauth2/authorize/google";
+export const signInWithPasswordEndPoint = "/auth/login";
 export const profileEndPoint = "/profile";
-export const matrixUri = "/matrics";
+export const metricUri = "/metrics";
 // endpoints
