@@ -8,7 +8,7 @@ import { FaArrowRightToBracket } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
-import { signInWithGoogle } from "api/services/Auth";
+import urlFunctionsObject from "api/Uri";
 function Index() {
   const navigate = useNavigate();
   return (
@@ -174,7 +174,8 @@ function Index() {
                 alignItems: "center",
               }}
             >
-              <button
+              <a
+                href={urlFunctionsObject.signInWithGoogle()}
                 style={{
                   border: "2px solid #eaefec",
                   background: "white",
@@ -183,12 +184,9 @@ function Index() {
                   cursor: "pointer",
                   width: "100%",
                 }}
-                onClick={() => {
-                  signInWithGoogle();
-                }}
               >
                 <FcGoogle style={{ height: "2rem", width: "2rem" }} />
-              </button>
+              </a>
               <Box sx={{ margin: "auto", marginTop: "2.5rem" }}>
                 <span
                   style={{

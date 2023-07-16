@@ -1,6 +1,13 @@
-import { baseUri } from "./CONSTANTS";
+import {
+  baseUri,
+  signInWithPasswordEndPoint,
+  signInWithGoogleEndPoint,
+  matrixUri,
+} from "./CONSTANTS";
 
-export default {
-  signInWithGoogle: () => `${baseUri}/`,
-  signInWithPassword: () => `${baseUri}/`,
+const urlFunctionsObject = {
+  signInWithGoogle: () => `${baseUri}/${signInWithGoogleEndPoint}`,
+  signInWithPassword: () => `${baseUri}/${signInWithPasswordEndPoint}/`,
+  getMatrics: (matricsId: string) => `${baseUri}/${matrixUri}`,
 };
+export default urlFunctionsObject;
