@@ -2,6 +2,8 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import TopBar from "../../DashboardRight/TopBar";
+import { useContext } from "react";
+import { ProfileContext } from "components/Providers/ProfileProvider";
 import {
   FaRegCalendarDays,
   FaAngleDown,
@@ -33,9 +35,15 @@ const AnalyticsArray = [
 ];
 
 function AnalyticsPage() {
+  const profileValue = useContext(ProfileContext);
   return (
     <>
-      <TopBar message="Good evening, Thom!">
+      <TopBar
+        message={`Good evening, ${
+          //@ts-expect-error
+          profileValue.profile ? profileValue.profile.name : ""
+        }!`}
+      >
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CustomButton Icon={FaCirclePlus} LightText="Add new Metric" />
           <CustomButton

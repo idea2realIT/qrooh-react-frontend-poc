@@ -12,19 +12,22 @@ import MetricsPage from "./components/Dashboard/SubPages/SettingsPage/SettingsSu
 import DataSourcePage from "./components/Dashboard/SubPages/SettingsPage/SettingsSubPages/DataSourcePage";
 import AddOnsPage from "./components/Dashboard/SubPages/SettingsPage/SettingsSubPages/AddOnsPage";
 import AccountsPage from "./components/Dashboard/SubPages/SettingsPage/SettingsSubPages/AccountsPage";
-
-function OAuth2RedirectHandler() {
-  return null;
-}
-
+//importing context
+import ProfileProvider from "components/Providers/ProfileProvider";
 function App() {
   return (
     <Box sx={{ height: "100vh", width: "100vw" }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
-          {/* <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} /> */}
-          <Route path="/dashboard" element={<DashBoard />}>
+          <Route
+            path="/dashboard"
+            element={
+              <ProfileProvider>
+                <DashBoard />
+              </ProfileProvider>
+            }
+          >
             <Route path="analytics" element={<AnalyticsPage />} />
             <Route path="contacts" element={<Contact />} />
             <Route path="reports" element={<ReportPage />} />

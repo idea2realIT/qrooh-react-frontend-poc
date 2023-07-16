@@ -1,7 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React, { ReactComponentElement, ReactNode } from "react";
-import { FaCirclePlus, FaRegCalendarDays, FaAngleDown } from "react-icons/fa6";
-import CustomButton from "../../microComponents/CustomButton";
+import React, { ReactNode } from "react";
 
 function TopBar({
   message,

@@ -1,7 +1,8 @@
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import SampleAvatarImage from "images/profile.jpeg";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ProfileContext } from "components/Providers/ProfileProvider";
 import {
   FaAddressBook,
   FaFolderOpen,
@@ -10,6 +11,7 @@ import {
   FaQ,
 } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
+import { ApiSuccessResponse } from "api/services/Profile";
 const MenuItems = [
   {
     id: 0,
@@ -33,6 +35,8 @@ const MenuItems = [
 function DashBoardLeft() {
   const location = useLocation();
   const [active, setActive] = useState(0);
+
+  const profileValue = useContext(ProfileContext);
   return (
     <Box
       sx={{
@@ -147,7 +151,8 @@ function DashBoardLeft() {
         <Avatar
           sx={{ height: "4.6rem", width: "4.6rem", marginTop: "1.8rem" }}
           alt="person name"
-          src={SampleAvatarImage}
+          //@ts-expect-error
+          src={profileValue.profile ? profileValue.profile.imageUrl : ""}
         />
       </Box>
     </Box>

@@ -4,12 +4,15 @@ import {
   signInWithGoogleEndPoint,
   metricUri,
   REDIRECT_URI,
-  OAuthRedirectUri
+  OAuthRedirectUri,
+  profileEndPoint,
 } from "./CONSTANTS";
 
 const urlFunctionsObject = {
-  signInWithGoogle: () => `${baseUri}/${signInWithGoogleEndPoint}?${REDIRECT_URI}=${OAuthRedirectUri}`,
+  signInWithGoogle: () =>
+    `${baseUri}/${signInWithGoogleEndPoint}?${REDIRECT_URI}=${OAuthRedirectUri}`,
   signInWithPassword: () => `${baseUri}/${signInWithPasswordEndPoint}/`,
   getMetric: (metricsId: string) => `${baseUri}/${metricUri}`,
+  getProfile: () => `${baseUri}/${profileEndPoint}`,
 };
 export default urlFunctionsObject;
