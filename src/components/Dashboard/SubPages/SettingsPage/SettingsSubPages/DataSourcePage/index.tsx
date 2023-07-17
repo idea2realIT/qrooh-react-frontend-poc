@@ -10,14 +10,18 @@ import {
 import CustomWrapper from "../../../../../microComponents/CustomWrapper";
 import CustomButton from "../../../../../microComponents/CustomButton";
 import TopBar from "../../../../DashboardRight/TopBar";
+import urlFunctionsObject from "api/Uri";
 const DataSourceArray = [
-  { id: 0, source: "Google Analytics", active: true },
+  { id: 0, source: "Google Analytics", active: false },
   {
     id: 1,
     source: "Google Ads",
-    active: false,
+    active: true,
   },
 ];
+function ActivateButton() {
+  return <a href={urlFunctionsObject.getDataSourceConnect()}>Activate</a>;
+}
 function DataSourcePage() {
   return (
     <Box>
@@ -63,24 +67,30 @@ function DataSourcePage() {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Box
-                      sx={{
-                        color: "#59B947",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <FaCircle
-                        style={{
+                    {e.active ? (
+                      <Box
+                        sx={{
                           color: "#59B947",
-                          height: "1.1rem",
-                          width: "1.1rem",
+                          display: "flex",
+                          alignItems: "center",
                         }}
-                      />
-                      <span style={{ marginLeft: "1rem", fontSize: "1.25rem" }}>
-                        Active
-                      </span>
-                    </Box>
+                      >
+                        <FaCircle
+                          style={{
+                            color: "#59B947",
+                            height: "1.1rem",
+                            width: "1.1rem",
+                          }}
+                        />
+                        <span
+                          style={{ marginLeft: "1rem", fontSize: "1.25rem" }}
+                        >
+                          Active
+                        </span>
+                      </Box>
+                    ) : (
+                      <ActivateButton />
+                    )}
                     <Box>
                       <FaEllipsis
                         style={{

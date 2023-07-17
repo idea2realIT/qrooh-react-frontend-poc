@@ -36,16 +36,17 @@ const AnalyticsArray = [
 
 function AnalyticsPage() {
   const profileValue = useContext(ProfileContext);
+  console.log("profileValue", profileValue);
   return (
     <>
       <TopBar
         message={`Good evening, ${
           //@ts-expect-error
-          profileValue.profile ? profileValue.profile.name : ""
+          profileValue.profile ? profileValue.profile.data.name : ""
         }!`}
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <CustomButton Icon={FaCirclePlus} LightText="Add new Metric" />
+          {/* <CustomButton Icon={FaCirclePlus} LightText="Add new Metric" /> */}
           <CustomButton
             Icon={FaRegCalendarDays}
             LightText="Your overview of the"

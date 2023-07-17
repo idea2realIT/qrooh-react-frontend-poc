@@ -152,7 +152,7 @@ function DashBoardLeft() {
           sx={{ height: "4.6rem", width: "4.6rem", marginTop: "1.8rem" }}
           alt="person name"
           //@ts-expect-error
-          src={profileValue.profile ? profileValue.profile.imageUrl : ""}
+          src={profileValue.profile ? profileValue.profile.data.imageUrl : ""}
         />
       </Box>
     </Box>

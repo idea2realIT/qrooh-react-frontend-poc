@@ -18,7 +18,7 @@ export default function ProfileProvider({
   }
   useEffect(() => {
     getAndSetProfile();
-  });
+  }, []);
   return (
     <ProfileContext.Provider value={{ profile }}>
       {children}

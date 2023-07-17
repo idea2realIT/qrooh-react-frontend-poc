@@ -14,10 +14,11 @@ function Index() {
   const navigate = useNavigate();
   useEffect(() => {
     const token = Cookies.get("token");
+    console.log("token", token);
     if (token) {
       navigate("/dashboard/analytics");
     }
-  }, [navigate]);
+  }, []);
   return (
     <Box sx={{ display: "flex", height: "100vh", position: "relative" }}>
       <Box

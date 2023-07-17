@@ -16,28 +16,18 @@ interface ApiSuccessResponse {
   provider: string;
   providerId: string;
 }
-
-const sampleProfile = {
-  id: 3,
-  name: "Test 4yourbrand",
-  email: "test.4yourbrand@gmail.com",
-  imageUrl:
-    "https://lh3.googleusercontent.com/a/AAcHTtfISa6Fyc6AQdHpB3qhO6LMn-HL7XWRp96PnymznXJS=s96-c",
-  emailVerified: false,
-  provider: "google",
-  providerId: "105011330744414838993",
-};
-
 export async function getProfile() {
   try {
     const profile: ApiSuccessResponse = await axios.get(
       UrlFunctionsObject.getProfile(),
       {
+        withCredentials: true,
         headers: {
-          Authorization: Cookies.get("token"),
+          Authorization: `Bearer ${Cookies.get("token")}`,
         },
       }
     );
+    console.log(profile);
     return {
       success: true,
       profile,
@@ -45,7 +35,7 @@ export async function getProfile() {
   } catch (e) {
     return {
       success: false,
-      profile: sampleProfile,
+      profile: null,
     };
   }
 }
