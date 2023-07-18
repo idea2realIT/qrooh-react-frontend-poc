@@ -7,6 +7,6 @@ export const REDIRECT_URI = "redirect_uri";
 export const signInWithGoogleEndPoint = "oauth2/authorize/google";
 export const signInWithPasswordEndPoint = "auth/login";
 export const profileEndPoint = "user/me";
-export const metricUri = "metrics";
+export const metricUri = "analytics/data/property";
 export const connectDataSource = "analytics/connect";
 // endpoints

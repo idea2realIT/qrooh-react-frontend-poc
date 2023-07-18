@@ -16,5 +16,15 @@ const urlFunctionsObject = {
   getMetric: (metricsId: string) => `${baseUri}/${metricUri}`,
   getProfile: () => `${baseUri}/${profileEndPoint}`,
   getDataSourceConnect: () => `${baseUri}/${connectDataSource}`,
+  getMatrics: (
+    id: number,
+    from: string,
+    to: string,
+    metric: string,
+    dimension: string[]
+  ) =>
+    `${baseUri}/${metricUri}/${id}?from=${from}&to=${to}&metric=${metric}${dimension.map(
+      (e) => `&dimension=${e}`
+    )}`,
 };
 export default urlFunctionsObject;

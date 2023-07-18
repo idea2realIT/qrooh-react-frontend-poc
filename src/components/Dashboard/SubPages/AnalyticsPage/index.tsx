@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import TopBar from "../../DashboardRight/TopBar";
@@ -8,12 +8,15 @@ import {
   FaRegCalendarDays,
   FaAngleDown,
   FaUserLarge,
-  FaCirclePlus,
   FaCircleUp,
   FaCircleDown,
 } from "react-icons/fa6";
 import CustomButton from "../../../microComponents/CustomButton";
 import CustomWrapper from "../../../microComponents/CustomWrapper";
+import getMatrics, {
+  ApiSuccessResponse,
+  ApiFailureResponse,
+} from "api/services/Metrics";
 
 const AnalyticsArray = [
   { id: 0, label: "Leads", data: 62, change: "12%", changeSign: true },
@@ -36,6 +39,14 @@ const AnalyticsArray = [
 
 function AnalyticsPage() {
   const profileValue = useContext(ProfileContext);
+  const [metrics, setMetrics] = useState<ApiSuccessResponse | null>(null);
+  async function updateMetrics() {
+    const metrics = await getMatrics();
+    setMetrics(metrics.metrics);
+  }
+  useEffect(() => {
+    updateMetrics();
+  }, []);
   console.log("profileValue", profileValue);
   return (
     <>
@@ -46,7 +57,6 @@ function AnalyticsPage() {
         }!`}
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          {/* <CustomButton Icon={FaCirclePlus} LightText="Add new Metric" /> */}
           <CustomButton
             Icon={FaRegCalendarDays}
             LightText="Your overview of the"

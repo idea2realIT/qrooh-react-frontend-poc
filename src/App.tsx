@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import "./App.css";
 import DashBoard from "./components/Dashboard/Layout";
-import SignIn from "./components/SignIn";
+import SignIn from "./components/LogInPages/SignIn";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnalyticsPage from "./components/Dashboard/SubPages/AnalyticsPage";
 import Contact from "./components/Dashboard/SubPages/ContactsPage";
@@ -14,12 +14,14 @@ import AddOnsPage from "./components/Dashboard/SubPages/SettingsPage/SettingsSub
 import AccountsPage from "./components/Dashboard/SubPages/SettingsPage/SettingsSubPages/AccountsPage";
 //importing context
 import ProfileProvider from "components/Providers/ProfileProvider";
+import SignUp from "components/LogInPages/SignUp";
 function App() {
   return (
     <Box sx={{ height: "100vh", width: "100vw" }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route
             path="/dashboard"
             element={
