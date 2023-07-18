@@ -92,7 +92,7 @@ function SignIn() {
           <FormInput
             name="password"
             type="password"
-            autoComplete="password"
+            autoComplete="current-password"
             id="password"
             style={{ letterSpacing: "0.05rem" }}
             placeholder="••••••••••••••••••••"
