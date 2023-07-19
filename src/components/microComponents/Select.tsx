@@ -34,6 +34,7 @@ const ListItem = styled.li<ListItemProps>`
   color: #355f44;
   font-weight: 700;
   transition: background 0.2s;
+  white-space: nowrap;
   &:hover {
     background: #ffffff;
   }

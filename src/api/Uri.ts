@@ -9,24 +9,35 @@ import {
   connectDataSource,
   accountSummaries,
 } from "./CONSTANTS";
-
+export interface getMetricsFunctionArgumentsType {
+  property: number;
+  from: string;
+  to: string;
+  metric: string;
+  dimension?: string[];
+}
 const urlFunctionsObject = {
   signInWithGoogle: () =>
     `${baseUri}/${signInWithGoogleEndPoint}?${REDIRECT_URI}=${OAuthRedirectUri}`,
   signInWithPassword: () => `${baseUri}/${signInWithPasswordEndPoint}/`,
-  getMetric: (metricsId: string) => `${baseUri}/${metricUri}`,
   getProfile: () => `${baseUri}/${profileEndPoint}`,
   getDataSourceConnect: () => `${baseUri}/${connectDataSource}`,
-  getMatrics: (
-    id: number,
-    from: string,
-    to: string,
-    metric: string,
-    dimension: string[]
-  ) =>
-    `${baseUri}/${metricUri}/${id}?from=${from}&to=${to}&metric=${metric}${dimension.map(
-      (e) => `&dimension=${e}`
-    )}`,
+  getMetrics: ({
+    property,
+    from,
+    to,
+    metric,
+    dimension,
+  }: getMetricsFunctionArgumentsType) => {
+    let dimensionsUri = "";
+    if (dimension) {
+      dimension.map((e) => {
+        dimensionsUri += `&dimension=${e}`;
+      });
+    }
+
+    return `${baseUri}/${metricUri}/${property}?from=${from}&to=${to}&metric=${metric}${dimensionsUri}`;
+  },
   getAccountSummaries: () => `${baseUri}/${accountSummaries}`,
 };
 export default urlFunctionsObject;

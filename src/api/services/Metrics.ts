@@ -1,36 +1,40 @@
 import axios from "axios";
 import UrlFunctionsObject from "api/Uri";
 import Cookies from "js-cookie";
-interface ApiFailureResponse {
+import { getMetricsFunctionArgumentsType } from "api/Uri";
+export interface ApiFailureResponse {
   timestamp: string;
   status: number;
   error: string;
   path: string;
 }
-interface ApiSuccessResponse {
-  metricHeaders: [
-    {
-      name: string;
-      type: string;
-    }
-  ];
-  rows: [
-    {
-      metricValues: [
-        {
-          value: string;
-        }
-      ];
-    }
-  ];
+export interface APISuccessResponse {
+  metricHeaders: MetricHeader[];
+  rows: Row[];
   rowCount: number;
-  metadata: {
-    currencyCode: string;
-    timeZone: string;
-  };
-  kind: "analyticsData#runReport";
+  metadata: Metadata;
+  kind: string;
 }
-const sampleMetricsResponseWithoutDimensions: ApiSuccessResponse = {
+
+export interface Metadata {
+  currencyCode: string;
+  timeZone: string;
+}
+
+export interface MetricHeader {
+  name: string;
+  type: string;
+}
+
+export interface Row {
+  metricValues: MetricValue[];
+}
+
+export interface MetricValue {
+  value: string;
+}
+
+const sampleMetricsResponseWithoutDimensions: APISuccessResponse = {
   metricHeaders: [
     {
       name: "averageSessionDuration",
@@ -53,10 +57,17 @@ const sampleMetricsResponseWithoutDimensions: ApiSuccessResponse = {
   },
   kind: "analyticsData#runReport",
 };
-export default async function getMatrics() {
+export default async function getMatrics({
+  property,
+  from,
+  to,
+  metric,
+  dimension,
+}: getMetricsFunctionArgumentsType) {
   try {
-    const metrics: ApiSuccessResponse = await axios.get(
-      UrlFunctionsObject.getProfile(),
+    throw new Error("intentional error");
+    const metrics = await axios.get(
+      UrlFunctionsObject.getMetrics({ property, from, to, metric, dimension }),
       {
         withCredentials: true,
         headers: {
@@ -64,9 +75,11 @@ export default async function getMatrics() {
         },
       }
     );
+    console.log("api call successfull");
+    const data: APISuccessResponse = metrics.data;
     return {
       success: true,
-      metrics: metrics,
+      metrics: data,
     };
   } catch (e) {
     return {
@@ -75,4 +88,3 @@ export default async function getMatrics() {
     };
   }
 }
-export type { ApiFailureResponse, ApiSuccessResponse };
