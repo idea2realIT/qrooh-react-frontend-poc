@@ -28,12 +28,6 @@ function DataSourcePage() {
       <TopBar message="Your Data sources">
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CustomButton Icon={FaCirclePlus} LightText="Add new data source" />
-          <CustomButton
-            Icon={FaUserLarge}
-            DarkText="4yourbrand"
-            AfterIcon={FaAngleDown}
-            sx={{ marginLeft: "1rem" }}
-          />
         </Box>
       </TopBar>
       <CustomWrapper sx={{ marginTop: "3rem" }}>

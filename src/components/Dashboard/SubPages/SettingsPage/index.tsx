@@ -49,14 +49,7 @@ const SettingsMenuItems: SettingsMenuItemsInterface[] = [
 function SettingsPage() {
   return (
     <Box>
-      <TopBar message={"Settings"}>
-        <CustomButton
-          Icon={FaUserLarge}
-          DarkText="4yourbrand"
-          AfterIcon={FaAngleDown}
-          sx={{ marginLeft: "1rem" }}
-        />
-      </TopBar>
+      <TopBar message={"Settings"}></TopBar>
       <Box
         sx={{
           marginTop: "3.2rem",

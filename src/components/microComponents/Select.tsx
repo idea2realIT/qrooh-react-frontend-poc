@@ -39,15 +39,11 @@ const ListItem = styled.li<ListItemProps>`
   }
 `;
 // end of styled-components
-interface bookType {
+interface optionType {
   id: number;
   value: string;
 }
-const books: bookType[] = [
-  { id: 0, value: "last 7 days" },
-  { id: 1, value: "last 28 days" },
-  { id: 2, value: "last 14 days" },
-];
+
 function itemToString(item: any) {
   return item ? item.value : "";
 }
@@ -57,11 +53,13 @@ function Select({
   LightText,
   sx,
   onChange,
+  options,
 }: {
   Icon?: IconType;
   LightText?: string;
   sx?: Object;
-  onChange: (item: bookType | null) => void;
+  onChange: (item: optionType | null) => void;
+  options: optionType[];
 }) {
   const {
     isOpen,
@@ -70,9 +68,9 @@ function Select({
     getMenuProps,
     getItemProps,
   } = useSelect({
-    items: books,
+    items: options,
     itemToString,
-    initialSelectedItem: books[0],
+    initialSelectedItem: options[0],
   });
   useEffect(() => {
     onChange(selectedItem);
@@ -91,7 +89,7 @@ function Select({
       </SelectButtonContainer>
       <OptionsList open={isOpen} {...getMenuProps()}>
         {isOpen &&
-          books.map((item, index) => (
+          options.map((item, index) => (
             <ListItem
               index={item.id}
               key={item.id}

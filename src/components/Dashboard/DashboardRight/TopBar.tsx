@@ -1,12 +1,20 @@
 import { Box, Typography } from "@mui/material";
+import CustomButton from "components/microComponents/CustomButton";
+import Select from "components/microComponents/Select";
 import React, { ReactNode } from "react";
+import { FaUserLarge, FaAngleDown } from "react-icons/fa6";
 
+const users = [
+  { id: 0, value: "4yourbrand" },
+  { id: 1, value: "4yourbrand2" },
+  { id: 2, value: "4yourbrand3" },
+];
 function TopBar({
   message,
   children,
 }: {
   message: string;
-  children: ReactNode;
+  children?: ReactNode;
 }) {
   return (
     <Box
@@ -29,23 +37,17 @@ function TopBar({
           {/* Good evening, Thom! */}
         </Typography>
       </Box>
-      {/* <Box sx={{ display: "flex", alignItems: "center" }}>
-        <CustomButton Icon={FaCirclePlus} LightText="Add new Metric" />
-        <CustomButton
-          Icon={FaRegCalendarDays}
-          LightText="Your overview of the"
-          DarkText="last 7 Days"
-          AfterIcon={FaAngleDown}
-          sx={{ marginLeft: "1rem" }}
-        />
-        <CustomButton
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        {children}
+        <Select
+          options={users}
+          onChange={() => {
+            console.log("something happend");
+          }}
           Icon={FaUserLarge}
-          DarkText="4yourbrand"
-          AfterIcon={FaAngleDown}
           sx={{ marginLeft: "1rem" }}
         />
-      </Box> */}
-      {children}
+      </Box>
     </Box>
   );
 }

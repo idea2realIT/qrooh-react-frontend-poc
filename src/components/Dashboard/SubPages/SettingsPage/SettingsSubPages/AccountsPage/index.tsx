@@ -32,12 +32,6 @@ function AccountsPage() {
       <TopBar message="Accounts">
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CustomButton Icon={FaCirclePlus} LightText="Add new account" />
-          <CustomButton
-            Icon={FaUserLarge}
-            DarkText="4yourbrand"
-            AfterIcon={FaAngleDown}
-            sx={{ marginLeft: "1rem" }}
-          />
         </Box>
       </TopBar>
       <CustomWrapper sx={{ marginTop: "3rem" }}>

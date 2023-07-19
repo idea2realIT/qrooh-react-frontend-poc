@@ -18,12 +18,6 @@ function Contact() {
             LightText="Import leads"
             sx={{ marginLeft: "1rem" }}
           />
-          <CustomButton
-            Icon={FaUserLarge}
-            DarkText="4yourbrand"
-            AfterIcon={FaAngleDown}
-            sx={{ marginLeft: "1rem" }}
-          />
         </Box>
       </TopBar>
       <Box>

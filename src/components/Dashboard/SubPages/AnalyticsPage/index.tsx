@@ -36,7 +36,11 @@ const AnalyticsArray = [
     changeSign: false,
   },
 ];
-
+const durationOptions = [
+  { id: 0, value: "last 7 days" },
+  { id: 1, value: "last 28 days" },
+  { id: 2, value: "last 14 days" },
+];
 function AnalyticsPage() {
   const profileValue = useContext(ProfileContext);
   const [metrics, setMetrics] = useState<ApiSuccessResponse | null>(null);
@@ -55,22 +59,15 @@ function AnalyticsPage() {
           profileValue.profile ? profileValue.profile.data.name : "developer"
         }!`}
       >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Select
-            onChange={(e) => {
-              console.log(e);
-            }}
-            Icon={FaRegCalendarDays}
-            LightText="Your overview of the"
-            sx={{ marginLeft: "1rem" }}
-          />
-          <CustomButton
-            Icon={FaUserLarge}
-            DarkText="4yourbrand"
-            AfterIcon={FaAngleDown}
-            sx={{ marginLeft: "1rem" }}
-          />
-        </Box>
+        <Select
+          onChange={(e) => {
+            console.log(e);
+          }}
+          Icon={FaRegCalendarDays}
+          LightText="Your overview of the"
+          sx={{ marginLeft: "1rem" }}
+          options={durationOptions}
+        />
       </TopBar>
       <CustomWrapper sx={{ marginTop: "3rem" }}>
         <Box>

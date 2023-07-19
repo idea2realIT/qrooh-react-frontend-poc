@@ -41,12 +41,6 @@ function MetricsPage() {
       <TopBar message="Your metrics">
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CustomButton Icon={FaCirclePlus} LightText="Add new Metrics" />
-          <CustomButton
-            Icon={FaUserLarge}
-            DarkText="4yourbrand"
-            AfterIcon={FaAngleDown}
-            sx={{ marginLeft: "1rem" }}
-          />
         </Box>
       </TopBar>
       <CustomWrapper sx={{ marginTop: "3rem" }}>

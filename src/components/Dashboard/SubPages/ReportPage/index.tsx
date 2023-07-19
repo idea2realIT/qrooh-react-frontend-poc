@@ -20,12 +20,6 @@ function ReportPage() {
       <TopBar message="Your reports">
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CustomButton Icon={FaCirclePlus} LightText="Create new report" />
-          <CustomButton
-            Icon={FaUserLarge}
-            DarkText="4yourbrand"
-            AfterIcon={FaAngleDown}
-            sx={{ marginLeft: "1rem" }}
-          />
         </Box>
       </TopBar>
       <Box
