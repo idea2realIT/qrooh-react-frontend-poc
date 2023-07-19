@@ -54,6 +54,7 @@ function MetricsPage() {
           {MetricsArray.map((e) => {
             return (
               <Box
+                key={e.id}
                 sx={{
                   height: "8.1rem",
                   display: "grid",

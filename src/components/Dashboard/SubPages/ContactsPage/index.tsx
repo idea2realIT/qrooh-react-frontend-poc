@@ -1,4 +1,3 @@
-import React from "react";
 import Box from "@mui/material/Box";
 import TopBar from "../../DashboardRight/TopBar";
 import {
@@ -7,7 +6,7 @@ import {
   FaUserLarge,
   FaFileImport,
 } from "react-icons/fa6";
-import CustomButton from "../../../microComponents/CustomButton";
+import CustomButton from "components/microComponents/CustomButton";
 function Contact() {
   return (
     <Box>
@@ -85,9 +84,10 @@ function Contact() {
             </button>
           </Box>
           <Box sx={{ paddingX: "1.8rem" }}>
-            {[1, 2, 3, 4, 5].map((e) => {
+            {[1, 2, 3, 4, 5].map((e, index) => {
               return (
                 <Box
+                  key={index}
                   sx={{
                     display: "flex",
                     flexDirection: "colunmn",

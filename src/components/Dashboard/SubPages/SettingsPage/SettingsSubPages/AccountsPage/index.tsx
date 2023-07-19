@@ -44,7 +44,7 @@ function AccountsPage() {
         <Box sx={{}}>
           {AccountsArray.map((e) => {
             return (
-              <Box>
+              <Box key={e.id}>
                 <Box
                   sx={{
                     height: "8.1rem",

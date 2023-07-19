@@ -3,6 +3,7 @@ import { CustomButtonWithRef } from "components/microComponents/CustomButton";
 import { IconType } from "react-icons";
 import { FaAngleDown, FaAngleUp, FaRegCalendarDays } from "react-icons/fa6";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 // start of styled-components
 const SelectContainer = styled.div`
@@ -10,13 +11,13 @@ const SelectContainer = styled.div`
 `;
 const SelectButtonContainer = styled.div``;
 interface OptionsListPropsTyps {
-  isOpen: boolean;
+  open: boolean;
 }
 const OptionsList = styled.ul<OptionsListPropsTyps>`
   position: absolute;
   right: 0;
   background: #d0e2cf;
-  display: ${(props) => (props.isOpen ? "block" : "none")};
+  display: ${(props) => (props.open ? "block" : "none")};
   border-radius: 15px;
   padding: 0.5rem;
   margin-top: 5px;
@@ -38,8 +39,11 @@ const ListItem = styled.li<ListItemProps>`
   }
 `;
 // end of styled-components
-
-const books = [
+interface bookType {
+  id: number;
+  value: string;
+}
+const books: bookType[] = [
   { id: 0, value: "last 7 days" },
   { id: 1, value: "last 28 days" },
   { id: 2, value: "last 14 days" },
@@ -52,25 +56,27 @@ function Select({
   Icon,
   LightText,
   sx,
+  onChange,
 }: {
   Icon?: IconType;
   LightText?: string;
   sx?: Object;
+  onChange: (item: bookType | null) => void;
 }) {
   const {
     isOpen,
     selectedItem,
     getToggleButtonProps,
-    getLabelProps,
     getMenuProps,
-    highlightedIndex,
     getItemProps,
   } = useSelect({
     items: books,
     itemToString,
     initialSelectedItem: books[0],
   });
-  console.log(selectedItem ? selectedItem.id : null);
+  useEffect(() => {
+    onChange(selectedItem);
+  }, [selectedItem, onChange]);
   return (
     <SelectContainer style={sx}>
       <SelectButtonContainer>
@@ -83,7 +89,7 @@ function Select({
           {...getToggleButtonProps()}
         />
       </SelectButtonContainer>
-      <OptionsList isOpen={isOpen} {...getMenuProps()}>
+      <OptionsList open={isOpen} {...getMenuProps()}>
         {isOpen &&
           books.map((item, index) => (
             <ListItem

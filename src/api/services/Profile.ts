@@ -27,7 +27,6 @@ export async function getProfile() {
         },
       }
     );
-    console.log(profile);
     return {
       success: true,
       profile,

@@ -40,7 +40,7 @@ function DataSourcePage() {
         <Box sx={{}}>
           {DataSourceArray.map((e) => {
             return (
-              <Box>
+              <Box key={e.id}>
                 <Box
                   sx={{
                     height: "8.1rem",

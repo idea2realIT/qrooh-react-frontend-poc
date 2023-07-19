@@ -47,7 +47,6 @@ function AnalyticsPage() {
   useEffect(() => {
     updateMetrics();
   }, []);
-  console.log("profileValue", profileValue);
   return (
     <>
       <TopBar
@@ -58,6 +57,9 @@ function AnalyticsPage() {
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Select
+            onChange={(e) => {
+              console.log(e);
+            }}
             Icon={FaRegCalendarDays}
             LightText="Your overview of the"
             sx={{ marginLeft: "1rem" }}
