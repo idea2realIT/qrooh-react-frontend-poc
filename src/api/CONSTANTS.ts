@@ -9,4 +9,5 @@ export const signInWithPasswordEndPoint = "auth/login";
 export const profileEndPoint = "user/me";
 export const metricUri = "analytics/data/property";
 export const connectDataSource = "analytics/connect";
+export const accountSummaries = "analytics/admin/account_summaries";
 // endpoints

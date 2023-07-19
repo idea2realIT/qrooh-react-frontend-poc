@@ -1,25 +1,31 @@
 import axios from "axios";
 import UrlFunctionsObject from "api/Uri";
 import Cookies from "js-cookie";
+import { ApiSuccessResponse } from "./Profile";
 interface ApiFailureResponse {
   timestamp: string;
   status: number;
   error: string;
   path: string;
 }
-interface ApiSuccessResponse {
-  id: number;
+export interface Account {
+  account: string;
+  displayName: string;
   name: string;
-  email: string;
-  imageUrl: string;
-  emailVerified: boolean;
-  provider: string;
-  providerId: string;
+  propertySummaries: PropertySummary[];
 }
+export type APISuccessResponse = Account[];
+export interface PropertySummary {
+  displayName: string;
+  parent: string;
+  property: string;
+  propertyType: string;
+}
+
 export async function getAccountSummaries() {
   try {
-    const summaries: ApiSuccessResponse = await axios.get(
-      UrlFunctionsObject.getProfile(),
+    const summaries = await axios.get(
+      UrlFunctionsObject.getAccountSummaries(),
       {
         withCredentials: true,
         headers: {
@@ -27,15 +33,15 @@ export async function getAccountSummaries() {
         },
       }
     );
+    const data: ApiSuccessResponse = summaries.data;
     return {
       success: true,
-      summaries,
+      summaries: data,
     };
   } catch (e) {
     return {
       success: false,
-      profile: null,
+      summaries: null,
     };
   }
 }
-export type { ApiFailureResponse, ApiSuccessResponse };

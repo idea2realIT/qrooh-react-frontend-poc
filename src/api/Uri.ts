@@ -7,6 +7,7 @@ import {
   OAuthRedirectUri,
   profileEndPoint,
   connectDataSource,
+  accountSummaries,
 } from "./CONSTANTS";
 
 const urlFunctionsObject = {
@@ -26,5 +27,6 @@ const urlFunctionsObject = {
     `${baseUri}/${metricUri}/${id}?from=${from}&to=${to}&metric=${metric}${dimension.map(
       (e) => `&dimension=${e}`
     )}`,
+  getAccountSummaries: () => `${baseUri}/${accountSummaries}`,
 };
 export default urlFunctionsObject;

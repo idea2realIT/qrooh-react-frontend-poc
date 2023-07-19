@@ -1,9 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import CustomButton from "components/microComponents/CustomButton";
 import Select from "components/microComponents/Select";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { FaUserLarge, FaAngleDown } from "react-icons/fa6";
-
+import {
+  getAccountSummaries,
+  APISuccessResponse,
+} from "api/services/AccountSummaries";
+type user = { id: number; value: string };
 const users = [
   { id: 0, value: "4yourbrand" },
   { id: 1, value: "4yourbrand2" },
@@ -16,6 +20,21 @@ function TopBar({
   message: string;
   children?: ReactNode;
 }) {
+  const [users, setUsers] = useState<user[]>([]);
+  const callAccountSummariesAPI = async function () {
+    const response = await getAccountSummaries();
+    if (response.summaries) {
+      const usersArray: user[] = [];
+      //@ts-expect-error
+      response.summaries.map((e, index) => {
+        usersArray.push({ id: index, value: e.displayName });
+      });
+      setUsers(usersArray);
+    }
+  };
+  useEffect(() => {
+    callAccountSummariesAPI();
+  }, []);
   return (
     <Box
       sx={{
