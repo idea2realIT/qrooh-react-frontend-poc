@@ -1,16 +1,15 @@
 import { useEffect } from "react";
-
-import CustomHeading from "../../microComponents/CustomHeading";
+import CustomHeading from "components/microComponents/CustomHeading";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import styled from "styled-components";
 import FormSubmitButton from "components/LogInPages/commonComponents/FormSubmitButton";
 import SignInWithGoogleButton from "components/LogInPages/commonComponents/SignInWithGoogleLink";
-import BaseLayout from "../BaseLayout";
-import FormInput from "../commonComponents/FormInput";
+import BaseLayout from "components/LogInPages/BaseLayout";
+import FormInput from "components/LogInPages/commonComponents/FormInput";
 import { Link } from "react-router-dom";
-// start of styled-components
 
+// start of styled-components
 const FormContainer = styled.div`
   width: 30.2rem;
   margin: auto;
@@ -46,7 +45,6 @@ const SignUpLink = styled(Link)`
   color: #355f44;
   font-weight: 400;
 `;
-
 // end of styled-components
 
 function SignUp() {
@@ -82,7 +80,7 @@ function SignUp() {
             Password
           </FormLabel>
           <FormInput
-            name="password"
+            name="new-password"
             type="password"
             autoComplete="new-password"
             id="password"

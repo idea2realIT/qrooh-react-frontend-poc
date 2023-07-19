@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import TopBar from "../../DashboardRight/TopBar";
@@ -11,12 +11,12 @@ import {
   FaCircleUp,
   FaCircleDown,
 } from "react-icons/fa6";
-import CustomButton from "../../../microComponents/CustomButton";
+import CustomButton, {
+  CustomButtonWithRef,
+} from "../../../microComponents/CustomButton";
 import CustomWrapper from "../../../microComponents/CustomWrapper";
-import getMatrics, {
-  ApiSuccessResponse,
-  ApiFailureResponse,
-} from "api/services/Metrics";
+import getMatrics, { ApiSuccessResponse } from "api/services/Metrics";
+import Select from "components/microComponents/Select";
 
 const AnalyticsArray = [
   { id: 0, label: "Leads", data: 62, change: "12%", changeSign: true },
@@ -53,15 +53,13 @@ function AnalyticsPage() {
       <TopBar
         message={`Good evening, ${
           //@ts-expect-error
-          profileValue.profile ? profileValue.profile.data.name : ""
+          profileValue.profile ? profileValue.profile.data.name : "developer"
         }!`}
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <CustomButton
+          <Select
             Icon={FaRegCalendarDays}
             LightText="Your overview of the"
-            DarkText="last 7 Days"
-            AfterIcon={FaAngleDown}
             sx={{ marginLeft: "1rem" }}
           />
           <CustomButton
@@ -76,11 +74,11 @@ function AnalyticsPage() {
         <Box>
           {AnalyticsArray.map((e) => {
             return (
-              <Box>
-                {e.id ? <Divider /> : ""}
+              <Box key={e.id}>
+                {e.id !== 0 ? <Divider /> : ""}
                 <Box
                   sx={{
-                    height: "5rem",
+                    height: "6.25rem",
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",

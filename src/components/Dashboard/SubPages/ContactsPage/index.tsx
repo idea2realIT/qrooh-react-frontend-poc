@@ -94,10 +94,17 @@ function Contact() {
                     color: "#355f44",
                     fontFamily: "'Poppins', sans-serif",
                     borderBottom: "2px solid #eaefec",
-                    paddingY: "1.78rem",
+                    // paddingY: "1.78rem",
+                    height: "6.25rem",
                   }}
                 >
-                  <address>
+                  <address
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                    }}
+                  >
                     <span
                       style={{
                         display: "block",

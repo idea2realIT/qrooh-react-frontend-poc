@@ -1,6 +1,3 @@
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import SampleAvatarImage from "images/profile.jpeg";
 import { useState, useContext } from "react";
 import { ProfileContext } from "components/Providers/ProfileProvider";
 import {
@@ -10,9 +7,27 @@ import {
   FaGear,
   FaQ,
 } from "react-icons/fa6";
-import { Link, useLocation } from "react-router-dom";
-import { ApiSuccessResponse } from "api/services/Profile";
-const MenuItems = [
+import { Link, Location, useLocation } from "react-router-dom";
+import styled from "styled-components";
+import { IconType } from "react-icons/lib";
+import AvatarPlaceholder from "images/avatarPlacehoder.svg";
+
+const Avatar = styled.img`
+  height: 4.6rem;
+  width: 4.6rem;
+  margin-top: 1.8rem;
+  border-radius: 2.3rem;
+`;
+
+type MenuItemType = {
+  id: number;
+  name: string;
+  link: string;
+  Icon: IconType;
+};
+
+type MenuItemsType = MenuItemType[];
+const MenuItems: MenuItemsType = [
   {
     id: 0,
     name: "metrics",
@@ -32,35 +47,64 @@ const MenuItems = [
     Icon: FaFolderOpen,
   },
 ];
+
+// start of styled-components
+const Container = styled.div`
+  padding: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background: white;
+`;
+const DashboardLinkContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const DashboardLogoLink = styled(Link)`
+  height: 4.6rem;
+  width: 4.6rem;
+  background: #eaefec;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+interface DashboardButtonLinkProps {
+  location: Location;
+  item: MenuItemType;
+}
+const DashboardButtonLink = styled(Link)<DashboardButtonLinkProps>`
+  height: 4.6rem;
+  width: 4.6rem;
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: ${(props) =>
+    props.location.pathname === props.item.link ? "#d6eed1" : "white"};
+  border: 3px solid
+    ${(props) =>
+      props.location.pathname === props.item.link ? "#c6e2c3" : "#eaefec"};
+`;
+const Divider = styled.hr`
+  display: block;
+  height: 3px;
+  background: #eaefec;
+  margin: 4px;
+  border: none;
+`;
+// end of styled-components
+
 function DashBoardLeft() {
   const location = useLocation();
   const [active, setActive] = useState(0);
-
   const profileValue = useContext(ProfileContext);
   return (
-    <Box
-      sx={{
-        padding: "2.75rem",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        height: "100%",
-        background: "white",
-      }}
-    >
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <Link
-          to="/dashboard/analytics"
-          style={{
-            height: "4.6rem",
-            width: "4.6rem",
-            background: "#eaefec",
-            borderRadius: "15px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+    <Container>
+      <DashboardLinkContainer>
+        <DashboardLogoLink to="/dashboard/analytics" style={{}}>
           <FaQ
             style={{
               height: "2.5rem",
@@ -69,27 +113,14 @@ function DashBoardLeft() {
               color: "#355f44",
             }}
           />
-        </Link>
+        </DashboardLogoLink>
         {MenuItems.map((e) => {
           return (
-            <Link
+            <DashboardButtonLink
               key={e.id}
               to={e.link}
-              style={{
-                height: "4.6rem",
-                width: "4.6rem",
-                background: `${
-                  location.pathname === e.link ? "#d6eed1" : "white"
-                }`,
-                marginTop: "1.8rem",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                border: `3px solid ${
-                  location.pathname === e.link ? "#c6e2c3" : "#eaefec"
-                }`,
-                borderRadius: "15px",
-              }}
+              location={location}
+              item={e}
               onClick={() => {
                 setActive(e.id);
               }}
@@ -102,39 +133,21 @@ function DashBoardLeft() {
                   color: "#355f44",
                 }}
               />
-            </Link>
+            </DashboardButtonLink>
           );
         })}
-      </Box>
-      <Box>
-        <hr
-          style={{
-            display: "block",
-            height: "3px",
-            background: "#eaefec",
-            margin: "4px",
-            border: "none",
+      </DashboardLinkContainer>
+      <div>
+        <Divider />
+        <DashboardButtonLink
+          location={location}
+          item={{
+            id: 3,
+            name: "settings",
+            link: "/dashboard/settings",
+            Icon: FaGear,
           }}
-        />
-        <Link
           to="/dashboard/settings"
-          style={{
-            height: "4.6rem",
-            width: "4.6rem",
-            background: `${
-              location.pathname === "/dashboard/settings" ? "#d6eed1" : "white"
-            }`,
-            marginTop: "1.8rem",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            border: `3px solid ${
-              location.pathname === "/dashboard/settings"
-                ? "#c6e2c3"
-                : "#eaefec"
-            }`,
-            borderRadius: "15px",
-          }}
           onClick={() => {
             setActive(3);
           }}
@@ -147,15 +160,19 @@ function DashBoardLeft() {
               color: "#355f44",
             }}
           />
-        </Link>
+        </DashboardButtonLink>
         <Avatar
-          sx={{ height: "4.6rem", width: "4.6rem", marginTop: "1.8rem" }}
           alt="person name"
-          //@ts-expect-error
-          src={profileValue.profile ? profileValue.profile.data.imageUrl : ""}
+          src={
+            // @ts-expect-error
+            profileValue.profile
+              ? // @ts-expect-error
+                profileValue.profile.data.imageUrl
+              : AvatarPlaceholder
+          }
         />
-      </Box>
-    </Box>
+      </div>
+    </Container>
   );
 }
 

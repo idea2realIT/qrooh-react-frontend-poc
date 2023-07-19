@@ -1,9 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import {
-  getProfile,
-  ApiFailureResponse,
-  ApiSuccessResponse,
-} from "api/services/Profile";
+import { getProfile, ApiSuccessResponse } from "api/services/Profile";
 export const ProfileContext = React.createContext({});
 
 export default function ProfileProvider({

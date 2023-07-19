@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import BackgroundImage from "../../images/background.webp";
-import logo from "../../images/logoQ.png";
-import name from "../../images/name.png";
+import BackgroundImage from "images/background.webp";
+import logo from "images/logoQ.png";
+import name from "images/name.png";
 import { ReactNode } from "react";
 const Container = styled.div`
   display: flex;
