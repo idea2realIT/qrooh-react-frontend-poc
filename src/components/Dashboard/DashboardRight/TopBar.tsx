@@ -1,12 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import CustomButton from "components/microComponents/CustomButton";
 import Select from "components/microComponents/Select";
 import React, { ReactNode, useEffect, useState } from "react";
-import { FaUserLarge, FaAngleDown } from "react-icons/fa6";
-import {
-  getAccountSummaries,
-  APISuccessResponse,
-} from "api/services/AccountSummaries";
+import { FaUserLarge } from "react-icons/fa6";
+import { getAccountSummaries } from "api/services/AccountSummaries";
 type user = { id: number; value: string };
 const users = [
   { id: 0, value: "4yourbrand" },

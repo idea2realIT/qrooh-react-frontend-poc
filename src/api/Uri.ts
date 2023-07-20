@@ -8,6 +8,7 @@ import {
   profileEndPoint,
   connectDataSource,
   accountSummaries,
+  signUpWithPasswordEndPoint,
 } from "./CONSTANTS";
 export interface getMetricsFunctionArgumentsType {
   property: number;
@@ -20,6 +21,7 @@ const urlFunctionsObject = {
   signInWithGoogle: () =>
     `${baseUri}/${signInWithGoogleEndPoint}?${REDIRECT_URI}=${OAuthRedirectUri}`,
   signInWithPassword: () => `${baseUri}/${signInWithPasswordEndPoint}/`,
+  signUpWithPassword: () => `${baseUri}/${signUpWithPasswordEndPoint}`,
   getProfile: () => `${baseUri}/${profileEndPoint}`,
   getDataSourceConnect: () => `${baseUri}/${connectDataSource}`,
   getMetrics: ({

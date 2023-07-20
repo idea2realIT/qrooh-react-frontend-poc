@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { FormEvent, FormEventHandler, useEffect, useState } from "react";
 import CustomHeading from "components/microComponents/CustomHeading";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -8,6 +8,7 @@ import SignInWithGoogleButton from "components/LogInPages/commonComponents/SignI
 import BaseLayout from "components/LogInPages/BaseLayout";
 import FormInput from "components/LogInPages/commonComponents/FormInput";
 import { Link } from "react-router-dom";
+import { loginWithPassword } from "api/services/Auth";
 // start of styled-components
 
 const FormContainer = styled.div`
@@ -57,6 +58,9 @@ const SignUpLink = styled(Link)`
 // end of styled-components
 
 function SignIn() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [loading, setLoadinG] = useState<boolean>();
   const navigate = useNavigate();
   useEffect(() => {
     const token = Cookies.get("token");
@@ -64,18 +68,21 @@ function SignIn() {
       navigate("/dashboard/analytics");
     }
   }, [navigate]);
-
+  const onSubmit = async function (e: FormEvent) {
+    e.preventDefault();
+    const login = await loginWithPassword(email, password);
+    console.log("login", login);
+    if (login.success) {
+      navigate("/dashboard/analytics");
+    }
+  };
   return (
     <BaseLayout>
       <FormContainer>
         <CustomHeading sx={{ marginTop: "1.5rem" }}>
           Welcome back!
         </CustomHeading>
-        <SignInForm
-          onSubmit={() => {
-            navigate("/dashboard/analytics");
-          }}
-        >
+        <SignInForm onSubmit={onSubmit}>
           <FormLabel htmlFor="email">E-mail</FormLabel>
           <FormInput
             name="email"
@@ -83,6 +90,10 @@ function SignIn() {
             autoComplete="username" // autocomplete="username" is intentional
             id="email"
             placeholder="thom@4yourbrand.io"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            disabled={loading}
           />
           <FormLabel htmlFor="password" style={{ marginTop: "1.4rem" }}>
             Password
@@ -94,6 +105,10 @@ function SignIn() {
             id="password"
             style={{ letterSpacing: "0.05rem" }}
             placeholder="••••••••••••••••••••"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            disabled={loading}
           />
           <ForgotPasswordLink to="/forgot-password">
             Forgot your password?

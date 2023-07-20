@@ -101,6 +101,7 @@ function DashBoardLeft() {
   const location = useLocation();
   const [active, setActive] = useState(0);
   const profileValue = useContext(ProfileContext);
+  console.log("profile", profileValue);
   return (
     <Container>
       <DashboardLinkContainer>
@@ -168,6 +169,9 @@ function DashBoardLeft() {
             profileValue.profile
               ? // @ts-expect-error
                 profileValue.profile.data.imageUrl
+                ? // @ts-expect-error
+                  profileValue.profile.data.imageUrl
+                : AvatarPlaceholder
               : AvatarPlaceholder
           }
         />

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import CustomHeading from "components/microComponents/CustomHeading";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -8,6 +8,7 @@ import SignInWithGoogleButton from "components/LogInPages/commonComponents/SignI
 import BaseLayout from "components/LogInPages/BaseLayout";
 import FormInput from "components/LogInPages/commonComponents/FormInput";
 import { Link } from "react-router-dom";
+import { signUpWithPassword } from "api/services/Auth";
 
 // start of styled-components
 const FormContainer = styled.div`
@@ -48,6 +49,9 @@ const SignUpLink = styled(Link)`
 // end of styled-components
 
 function SignUp() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [loading, setLoadin] = useState<boolean>();
   const navigate = useNavigate();
   useEffect(() => {
     const token = Cookies.get("token");
@@ -55,18 +59,20 @@ function SignUp() {
       navigate("/dashboard/analytics");
     }
   }, [navigate]);
-
+  const onSubmit = async function (e: FormEvent) {
+    e.preventDefault();
+    const login = await signUpWithPassword("unknown", email, password);
+    if (login.success) {
+      navigate("/dashboard/analytics");
+    }
+  };
   return (
     <BaseLayout>
       <FormContainer>
         <CustomHeading sx={{ marginTop: "1.5rem" }}>
           Create your free account!
         </CustomHeading>
-        <SignUpForm
-          onSubmit={() => {
-            navigate("/dashboard/analytics");
-          }}
-        >
+        <SignUpForm onSubmit={onSubmit}>
           <FormLabel htmlFor="email">E-mail</FormLabel>
           <FormInput
             name="email"
@@ -74,6 +80,9 @@ function SignUp() {
             autoComplete="username" // autocomplete="username" is intentional
             id="email"
             placeholder="thom@4yourbrand.io"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
           <FormLabel htmlFor="password" style={{ marginTop: "1.4rem" }}>
             Password
@@ -85,6 +94,9 @@ function SignUp() {
             id="password"
             style={{ letterSpacing: "0.05rem" }}
             placeholder="••••••••••••••••••••"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
 
           <FormSubmitButton type="submit">Create your account</FormSubmitButton>
